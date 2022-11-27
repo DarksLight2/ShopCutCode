@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Contracts\Auth\AuthorizeContract;
 use App\DTOs\Auth\AuthorizeUserDTO;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\SignInRequest;
+use App\Http\Requests\Auth\ForgotPasswordRequest;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
@@ -18,7 +18,7 @@ class SignInController extends Controller
         return view('auth.sign-in');
     }
 
-    public function handle(SignInRequest $request, AuthorizeContract $action): RedirectResponse
+    public function handle(ForgotPasswordRequest $request, AuthorizeContract $action): RedirectResponse
     {
         $result = $action(AuthorizeUserDTO::fromRequest($request));
 
