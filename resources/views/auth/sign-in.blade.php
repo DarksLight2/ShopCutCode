@@ -6,7 +6,9 @@
         <h1 class="mb-5 text-lg font-semibold">Вход в аккаунт</h1>
         <form class="space-y-3" method="post" action="{{ route('auth.sign-in.handle') }}">
             @csrf
-            @error('email') {{ $message }} @enderror
+            @error('email')
+            <div class="mt-3 text-pink text-xxs xs:text-xs"> {{ $message }} </div>
+            @enderror
             <input type="email" name="email"
                    class="@error('email') _is-error @enderror w-full h-14 px-4 rounded-lg border border-[#A07BF0] bg-white/20 focus:border-pink focus:shadow-[0_0_0_2px_#EC4176] outline-none transition text-white placeholder:text-white text-xxs md:text-xs font-semibold"
                    placeholder="E-mail" required>
