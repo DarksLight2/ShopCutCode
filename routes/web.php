@@ -5,10 +5,20 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ThumbnailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)
     ->name('home');
+
+Route::get('/tt', HomeController::class)
+    ->name('product.single');
+
+Route::get('/storage/images/{dir}/{method}/{size}/{file}', ThumbnailController::class)
+    ->where('method', 'resize|crop|fit')
+    ->where('file', '.+\.(png|jpg|gif|bmp|jpeg)$')
+    ->where('size', '\d+x\d+')
+    ->name('thumbnail');
 
 Route::get('/sign-in', SignInController::class)
     ->name('auth.sign-in');

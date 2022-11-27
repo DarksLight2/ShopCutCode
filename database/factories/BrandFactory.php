@@ -18,7 +18,10 @@ class BrandFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word()
+            'title' => $this->faker->word(),
+            'thumbnail' => $this->faker->word(),
+            'on_home_page' => $this->faker->boolean(),
+            'sorting' => $this->faker->numberBetween(0, 999),
         ];
     }
 }

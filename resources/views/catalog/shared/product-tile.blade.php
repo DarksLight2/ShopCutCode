@@ -11,11 +11,9 @@
         </h3>
         <div class="mt-auto pt-6">
             <div class="text-pink mb-3 text-md font-semibold font-bold">
-                @if($item->discount->value() !== 0)
-                    {{ $item->discount }} <span class="line-through text-sm text-body">{{ $item->price }}</span>
-                @else
-                    {{ $item->price }}
-                @endif
+                {{ $item->price }}
+                <span class="line-through text-sm text-body">{{ $item->price }}</span>
+
             </div>
             <div class="flex flex-wrap items-center gap-4">
                 <a href="#" class="w-[56px] !h-[56px] !px-0 btn btn-pink">

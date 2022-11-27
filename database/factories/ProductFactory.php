@@ -3,10 +3,11 @@
 namespace Database\Factories;
 
 use App\Models\Brand;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
+ * @extends Factory<Product>
  */
 class ProductFactory extends Factory
 {
@@ -15,13 +16,15 @@ class ProductFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'title' => $this->faker->word(),
             'description' => $this->faker->text(),
-            'thumbnail' => $this->faker->image('/'),
+            'thumbnail' => $this->faker->word(),
             'brand_id' => Brand::query()->inRandomOrder()->value('id'),
+            'on_home_page' => $this->faker->boolean(),
+            'sorting' => $this->faker->numberBetween(0, 999),
         ];
     }
 }

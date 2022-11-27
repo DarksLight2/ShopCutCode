@@ -17,11 +17,11 @@
         </ul>
         <div class="flex flex-col xl:flex-row xl:items-center xl:justify-between gap-6 mt-6">
             <div class="flex items-baseline gap-4">
-                <div class="text-pink text-md xl:text-lg font-black">{{ $item->discount->value() !== 0 ? $item->discount : $item->price }}</div>
+                <div class="text-pink text-md xl:text-lg font-black">{{ $item->price }}</div>
 
-                @if($item->discount->value() !== 0)
-                    <div class="text-body text-sm xl:text-md font-semibold line-through">{{ $item->price }}</div>
-                @endif
+
+                <div class="text-body text-sm xl:text-md font-semibold line-through">{{ $item->price }}</div>
+
             </div>
             <div class="flex flex-wrap items-center gap-4">
                 <a href="#" class="w-[56px] !h-[56px] !px-0 btn btn-pink">
