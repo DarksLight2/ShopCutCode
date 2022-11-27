@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\SignInController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/sign-in', SignInController::class)
+    ->name('auth.sign-in');
+
+Route::post('/sign-in', [SignInController::class, 'handle'])
+    ->name('auth.sign-in.handle');
+
+Route::get('/logout', [SignInController::class, 'logout'])
+    ->name('auth.logout');
