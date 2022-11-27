@@ -4,7 +4,11 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\SignInController;
 use App\Http\Controllers\Auth\SignUpController;
+use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/', HomeController::class)
+    ->name('home');
 
 Route::get('/sign-in', SignInController::class)
     ->name('auth.sign-in');
