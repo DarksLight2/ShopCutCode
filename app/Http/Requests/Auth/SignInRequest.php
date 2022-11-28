@@ -26,7 +26,7 @@ class SignInRequest extends FormRequest
         return [
             'email' => [
                 'required',
-                'email:dns'
+                'email'
             ],
             'password' => [
                 'required'

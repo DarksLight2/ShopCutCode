@@ -9,16 +9,22 @@ use App\Models\User;
 
 class RegisterUserAction implements RegisterUserContract
 {
-    public function __invoke(RegisterUserDTO $data): void
+    public function __invoke(RegisterUserDTO $data): bool
     {
-        $user = User::query()->create([
-            'name' => $data->name,
-            'email' => $data->email,
-            'password' => bcrypt($data->password),
-        ]);
+        if (!User::query()->where('email', '=', $data->email)->first()) {
+            $user = User::query()->create([
+                'name' => $data->name,
+                'email' => $data->email,
+                'password' => bcrypt($data->password),
+            ]);
 
-        auth()->login($user);
+            auth()->login($user);
 
-        event(new RegisterUserEvent($user));
+            event(new RegisterUserEvent($user));
+
+            return true;
+        }
+
+        return false;
     }
 }

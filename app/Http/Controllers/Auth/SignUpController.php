@@ -20,7 +20,15 @@ class SignUpController extends Controller
 
     public function handle(SignUpRequest $request, RegisterUserContract $action): RedirectResponse
     {
-        $action(RegisterUserDTO::fromRequest($request));
+        if (!$action(RegisterUserDTO::fromRequest($request))) {
+            return redirect()
+                ->route('auth.sign-up')
+                ->withErrors([
+                    'email' => 'Current user already exists'
+                ])
+                ->onlyInput(['email', 'name']);
+        }
+
 
         return redirect()->route('home');
     }

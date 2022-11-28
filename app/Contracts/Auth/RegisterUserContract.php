@@ -6,5 +6,5 @@ use App\DTOs\Auth\RegisterUserDTO;
 
 interface RegisterUserContract
 {
-    public function __invoke(RegisterUserDTO $data): void;
+    public function __invoke(RegisterUserDTO $data): bool;
 }
