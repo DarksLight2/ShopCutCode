@@ -8,8 +8,6 @@ export default defineConfig({
                 'resources/css/app.css',
                 'resources/js/app.js',
                 'resources/sass/main.sass',
-                'resources/sass/_components.sass',
-                'resources/sass/_mixins.sass',
             ],
             refresh: true,
         }),
